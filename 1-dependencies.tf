@@ -5,16 +5,16 @@ locals {
 }
 
 data "azurerm_resource_group" "orion" {
-  name = "net-spoke-eastus-prod-monitoring"
+  name = "${var.rg_vm}"
 }
 
 data "azurerm_virtual_network" "orion" {
-  name = "vnet-eastus-prod-mon"
+  name = "${var.vnet}"
   resource_group_name = "${data.azurerm_resource_group.orion.name}"
 }
 
 data "azurerm_subnet" "orion" {
-  name = "orion"
+  name = "${var.subnet}"
   resource_group_name = "${data.azurerm_resource_group.orion.name}"
   virtual_network_name = "${data.azurerm_virtual_network.orion.name}"
 }

@@ -6,7 +6,6 @@
 ```
 terraform init
 terraform init -backend-config="storage_account_name=$sa_name" -backend-config="container_name=$tf_name" -backend-config="access_key=$sa_key"  -backend-config="key=codelab.microsoft.tfstate"
-terraform import azurerm_resource_group.mygroup /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup
 terraform plan -var-file=orion.tfvars -out out.plan
 terraform apply out.plan
 terraform destroy -var-file=orion.tfvars

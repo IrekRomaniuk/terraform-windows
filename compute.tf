@@ -36,10 +36,10 @@ resource "azurerm_virtual_machine" "orion" {
   }
 
   os_profile_secrets {
-    source_vault_id = "${azurerm_key_vault.orion.id}"
+    source_vault_id = "${data.azurerm_key_vault.orion.id}"
 
     vault_certificates {
-      certificate_url   = "${azurerm_key_vault_certificate.orion.secret_id}"
+      certificate_url   = "${var.cert_uri}"
       certificate_store = "My"
     }
   }
