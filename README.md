@@ -3,12 +3,6 @@
 [terraform](https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples/virtual-machines/provisioners/windows)
 
 
-export sa_name=sta360spokenetwestus
-export sa_rg=net-spoke-westus-prod-automation
-export sa_loc=eastus
-export sa_key=g4y15BNmE1TUFOoCrebsbPa2Axg1Xf3vK3G+k8FeFD/Z9mM2C0x/Fvhu3VGl76KiQkbEDi4ZnTH3rdlVccBoYQ==
-export tf_name=tfstate-orion-state
-
 ```
 terraform init
 terraform init -backend-config="storage_account_name=$sa_name" -backend-config="container_name=$tf_name" -backend-config="access_key=$sa_key"  -backend-config="key=codelab.microsoft.tfstate"
