@@ -2,6 +2,23 @@
 
 [terraform](https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples/virtual-machines/provisioners/windows)
 
+```
+client_id=
+client_secret=
+subscription_id=
+tenant_id=
+admin_password=
+admin_username=
+location="eastus"
+prefix="orion"
+rg_vm=
+vnet=
+subnet="orion"
+vault=
+rg_vault="net-spoke-eastus-prod-automation"
+cert_uri="https://...vault.azure.net/secrets/.../..."
+```
+
 
 ```
 terraform init
