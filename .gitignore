@@ -3,3 +3,4 @@
 crash.log
 *.tfstate
 SECRET.md
+*.backup

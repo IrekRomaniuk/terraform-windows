@@ -6,11 +6,6 @@ variable "location" {
   description = "The Azure Region in which the resources in this example should exist"
 }
 
-variable "subscription_id" {}
-variable "client_id" {}
-variable "client_secret" {}
-variable "tenant_id" {}
-
 variable "admin_password" {}
 variable "admin_username" {}
 
