@@ -65,7 +65,8 @@ resource "azurerm_virtual_machine" "vm" {
     }
   }
 
-  /*provisioner "remote-exec" {
+  /*
+  provisioner "remote-exec" {
     connection {
       user     = "${local.admin_username}"
       password = "${data.azurerm_key_vault_secret.secret.value}"
@@ -83,4 +84,6 @@ resource "azurerm_virtual_machine" "vm" {
       "dir",
     ]
   }
-}*/
+*/  
+}
+
