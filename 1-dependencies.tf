@@ -1,5 +1,5 @@
 locals {
-  virtual_machine_name = "${var.prefix}-vm"
+  virtual_machine_name = "${var.prefix}"
   admin_username       = "${var.admin_username}"
 }
 
