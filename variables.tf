@@ -7,7 +7,6 @@ variable "location" {
 }
 
 # variable "admin_password" {}
-variable "admin_username" {}
 
 variable "vault" {}
 variable "rg_vault" {}
