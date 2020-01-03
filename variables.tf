@@ -15,3 +15,5 @@ variable "rg_vm" {}
 variable "cert_uri" {}
 variable "vnet" {}
 variable "subnet" {}
+
+variable "secret" {}

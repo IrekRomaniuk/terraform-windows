@@ -3,22 +3,22 @@ locals {
   custom_data_content = "${local.custom_data_params} ${file("./files/winrm.ps1")}"
 }
 
-resource "azurerm_virtual_machine" "orion" {
+resource "azurerm_virtual_machine" "vm" {
   name                  = "${local.virtual_machine_name}"
-  location              = "${data.azurerm_resource_group.orion.location}"
-  resource_group_name   = "${data.azurerm_resource_group.orion.name}"
-  network_interface_ids = ["${azurerm_network_interface.orion.id}"]
-  vm_size               = "Standard_D8s_v3"
+  location              = "${data.azurerm_resource_group.rg.location}"
+  resource_group_name   = "${data.azurerm_resource_group.rg.name}"
+  network_interface_ids = ["${azurerm_network_interface.nic.id}"]
+  vm_size               = "${var.vm_size}"
 
   # This means the OS Disk will be deleted when Terraform destroys the Virtual Machine
   # NOTE: This may not be optimal in all cases.
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2019-Datacenter"
-    version   = "latest"
+    publisher = "${var.image_publisher}"
+    offer     = "${var.image_offer}"
+    sku       = "${var.image_sku}"
+    version   = "${var.image_version}"
   }
 
   storage_os_disk {
@@ -31,12 +31,12 @@ resource "azurerm_virtual_machine" "orion" {
   os_profile {
     computer_name  = "${local.virtual_machine_name}"
     admin_username = "${local.admin_username}"
-    admin_password = "${local.admin_password}"
+    admin_password = "${data.azurerm_key_vault_secret.secret.value}"
     custom_data    = "${local.custom_data_content}"
   }
 
   os_profile_secrets {
-    source_vault_id = "${data.azurerm_key_vault.orion.id}"
+    source_vault_id = "${data.azurerm_key_vault.vault.id}"
 
     vault_certificates {
       certificate_url   = "${var.cert_uri}"
@@ -65,17 +65,17 @@ resource "azurerm_virtual_machine" "orion" {
     }
   }
 
-  provisioner "remote-exec" {
+  /*provisioner "remote-exec" {
     connection {
       user     = "${local.admin_username}"
-      password = "${local.admin_password}"
+      password = "${data.azurerm_key_vault_secret.secret.value}"
       port     = 5986
       https    = true
-      timeout  = "10m"
+      timeout  = "1m"
 
       # NOTE: if you're using a real certificate, rather than a self-signed one, you'll want this set to `false`/to remove this.
       insecure = true
-      host = azurerm_network_interface.orion.private_ip_address # 10.4.8.4
+      host = "${azurerm_network_interface.nic.private_ip_address}" # 10.4.8.4
     }
 
     inline = [
@@ -83,4 +83,4 @@ resource "azurerm_virtual_machine" "orion" {
       "dir",
     ]
   }
-}
+}*/
