@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 data "azurerm_key_vault" "vault" {
-  name                = "${var.vault}"
-  resource_group_name = "${var.rg_vault}"
+  name                = "${data.azurerm_key_vault_secret.name}"
+  resource_group_name = "${data.azurerm_key_vault_secret.resource_group_name}"
 }
 
