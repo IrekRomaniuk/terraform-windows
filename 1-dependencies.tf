@@ -32,4 +32,14 @@ resource "azurerm_network_interface" "nic" {
     public_ip_address_id          = ""
   }
 }
+
+data "azurerm_key_vault" "vault" {
+  name                        = "${var.vault}"
+  resource_group_name         = "${var.rg_vault}"
+}    
+
+data "azurerm_key_vault_secret" "secret" {
+  name         = "${var.secret}"
+  key_vault_id = "${data.azurerm_key_vault.vault.id}"
+}
  
