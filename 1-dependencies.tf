@@ -42,4 +42,10 @@ data "azurerm_key_vault_secret" "secret" {
   name         = "${var.secret}"
   key_vault_id = "${data.azurerm_key_vault.vault.id}"
 }
+
+data "azurerm_availability_set" "avset" {
+ name                         = "${var.avset}"
+ location                     = "${data.azurerm_resource_group.rg.location}"
+ resource_group_name          = "${data.azurerm_resource_group.rg.name}"
+}
  

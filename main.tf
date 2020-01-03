@@ -6,6 +6,7 @@ locals {
 resource "azurerm_virtual_machine" "vm" {
   name                  = "${local.virtual_machine_name}"
   location              = "${data.azurerm_resource_group.rg.location}"
+  availability_set_id   = "${data.azurerm_availability_set.avset.id}"
   resource_group_name   = "${data.azurerm_resource_group.rg.name}"
   network_interface_ids = ["${azurerm_network_interface.nic.id}"]
   vm_size               = "${var.vm_size}"

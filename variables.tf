@@ -21,6 +21,7 @@ variable "secret" {}
 variable "vm_size" {}
 
 variable "ip_address" {}
+variable "avset" {}
 
 variable "image_publisher" {
   description = "name of the publisher of the image (az vm image list)"
