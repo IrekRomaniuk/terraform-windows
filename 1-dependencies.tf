@@ -25,7 +25,7 @@ resource "azurerm_network_interface" "nic" {
   resource_group_name = "${data.azurerm_resource_group.rg.name}"
 
   ip_configuration {
-    name                          = "${var.prefix}ipconfig"
+    name                          = "${var.prefix}-ipconfig"
     subnet_id                     = "${data.azurerm_subnet.subnet.id}"
     private_ip_address_allocation = "Static"
     private_ip_address            = "${var.ip_address}"
