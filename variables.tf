@@ -11,6 +11,8 @@ variable "location" {
 variable "vault" {}
 variable "rg_vault" {}
 variable "rg_vm" {}
+
+variable "rg_vnet" {}
 variable "cert_uri" {}
 variable "vnet" {}
 variable "subnet" {}

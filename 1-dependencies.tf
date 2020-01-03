@@ -1,7 +1,6 @@
 locals {
   virtual_machine_name = "${var.prefix}-vm"
   admin_username       = "${var.admin_username}"
-  admin_password       = "${var.admin_password}"
 }
 
 data "azurerm_resource_group" "rg" {
@@ -27,7 +26,7 @@ resource "azurerm_network_interface" "nic" {
 
   ip_configuration {
     name                          = "${var.prefix}ipconfig"
-    subnet_id                     = "${data.azurerm_subnet.orion.id}"
+    subnet_id                     = "${data.azurerm_subnet.subnet.id}"
     private_ip_address_allocation = "Static"
     private_ip_address            = "${var.ip_address}"
     public_ip_address_id          = ""
