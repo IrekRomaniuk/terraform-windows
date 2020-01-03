@@ -25,7 +25,7 @@ resource "azurerm_virtual_machine" "vm" {
     name              = "${var.prefix}-osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
+    managed_disk_type = "StandardSSD_LRS"
   }
 
   os_profile {
