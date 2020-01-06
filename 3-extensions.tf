@@ -1,7 +1,7 @@
 resource "azurerm_virtual_machine_extension" "disk-encryption" {
   name                 = "DiskEncryption"
   location             = "${data.azurerm_resource_group.rg.location}"
- resource_group_name = "${data.azurerm_resource_group.rg.name}"
+ resource_group_name = "${local.virtual_machine_name}""
   virtual_machine_name = "${data.azurerm_virtual_machine.vm.name}"
   publisher            = "Microsoft.Azure.Security"
   type                 = "AzureDiskEncryption"
