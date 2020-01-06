@@ -43,6 +43,11 @@ data "azurerm_key_vault_secret" "secret" {
   key_vault_id = "${data.azurerm_key_vault.vault.id}"
 }
 
+/*data "azurerm_key_vault_key" "key" {
+  name         = "${var.disk-encr}"
+  vault_uri = "${data.azurerm_key_vault_key.vault.vault_uri}"
+}*/
+
 data "azurerm_availability_set" "avset" {
  name                         = "${var.avset}"
  resource_group_name          = "${data.azurerm_resource_group.rg.name}"

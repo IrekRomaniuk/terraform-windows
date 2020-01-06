@@ -14,6 +14,10 @@ variable "rg_vm" {}
 
 variable "rg_vnet" {}
 variable "cert_uri" {}
+
+variable "vault_uri" {}
+
+//variable "disk_encr" {}
 variable "vnet" {}
 variable "subnet" {}
 
